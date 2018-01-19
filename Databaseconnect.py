@@ -1,15 +1,18 @@
-import pymysql as psql
-from pandas.io import sql
+import sqlalchemy
+import pandas
 
 
 
 
 
-payload = {"host" : "thrivehq.cusrikqjbmvm.us-east-1.rds.amazonaws.com",
-            "pnum" : 3306,
-            "dbname": "Ads_txt",
+payload = {"host" : "@thrivehq.cusrikqjbmvm.us-east-1.rds.amazonaws.com",
+            "pnum" : "3306/",
+            "dbname": "Aniview",
             "id": "Thriveplus2017",
             "pwd":  "321happy"}
 
-conn = psql.connect(host = payload["host"],port = payload["pnum"], user = payload["id"], passwd = payload["pwd"], db = payload["dbname"])
-connect = conn.cursor()
+url = "mysql+pymysql://"+payload['id']+":"+payload['pwd']+payload['host']+":"+payload['pnum']+payload['dbname']
+# print(url)
+
+engine = sqlalchemy.create_engine(url)
+connection = engine.connect()

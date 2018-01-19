@@ -48,7 +48,9 @@ def dategen(period = input("Please enter Date range")):
     print("start date:" + str(startdate))
     print("end date:" + str(enddate))
 
-    return time.mktime(startdate.timetuple()),time.mktime(enddate.timetuple())
+
+
+    return int(time.mktime(startdate.timetuple())),int(time.mktime(enddate.timetuple()))
 
 
 
@@ -56,11 +58,11 @@ def urlgen():
     baseurl = "http://manage.aniview.com/api/adserver/stats/report?"
     start_date,end_date = dategen()
 
-    startdate = "startDate=" + str(int(start_date)) + "&"
-    # print(startdate)
-    enddate = "endDate=" + str(int(end_date)) + "&"
-
-    dimensions = "dimensions=" + "daily"+"%2C"+"ppid"+"%2C"+"pname"+"%2C"+"pcid"+"%2C"+"pcidName"+"%2C"+"%2C"+"ncidName"+"aid"+"%2C"+"nasidName" + "&"
+    startdate = "startDate=" + str(start_date) + "&"
+    print(startdate)
+    enddate = "endDate=" + str(end_date) + "&"
+    print(enddate)
+    dimensions = "dimensions=" + "daily" +"%2C" +"ppid"+"%2C"+"pname"+"%2C"+"pcid"+"%2C"+"pcidName"+"%2C"+"aid"+"%2C"+ "&"
     # print(dimensions)
     metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"fillRate"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
 
