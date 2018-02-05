@@ -35,8 +35,8 @@ def dategen(period = input("Please enter Date range")):
         enddate = today
 
     elif period == "last 7 days":
-        startdate = today.replace(day=(today.day - 7))
-        enddate = today.replace(day=(today.day - 1))
+        startdate = today - datetime.timedelta(days=7)
+        enddate = today - datetime.timedelta(days=1)
 
     elif period == "custom range":
         dates = customdate()
@@ -53,26 +53,36 @@ def dategen(period = input("Please enter Date range")):
     return int(time.mktime(startdate.timetuple())),int(time.mktime(enddate.timetuple()))
 
 
+def reporttype():
+    dimension = ['iid','iname','pcid','pcidName']
+    metric = ['inventory','request','impression','revenue','cost','profit']
+    character = ['%2C','&']
+
+    for d in dimension:
+        dimension = dimension + character
+        print(dimension)
 
 def urlgen():
     baseurl = "http://manage.aniview.com/api/adserver/stats/report?"
     start_date,end_date = dategen()
 
     startdate = "startDate=" + str(start_date) + "&"
-    print(startdate)
+    # print(start_date)
     enddate = "endDate=" + str(end_date) + "&"
-    print(enddate)
-    dimensions = "dimensions=" + "daily" +"%2C" +"ppid"+"%2C"+"pname"+"%2C"+"pcid"+"%2C"+"pcidName"+"%2C"+"aid"+"%2C"+ "&"
+    # print(end_date)
+    dimensions = "dimensions="+"iid"+"%2C"+"iname"+"%2C"+"pcid"+"%2C"+"pcidName"+ "&"
     # print(dimensions)
-    metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"fillRate"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
+    metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
 
     query = "query=%7B%7D"
 
     file_format = "format=json" + "&"
 
     url = baseurl + startdate + enddate + dimensions + metrics + file_format + query
+    print(url)
 
     return url
 
 # print(dategen())
-print(urlgen())
+# print(urlgen())
+print(reporttype())

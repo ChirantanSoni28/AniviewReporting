@@ -18,16 +18,22 @@ def connector():
     token = response.json()
     # print(token['data'])
     url = urlgen()
-
+    labels = ['Pub_id', 'Pub_Name', 'Pub_channel_Name', 'Channel_Name', 'Inventory', 'Requests', 'Impressions',
+               'Revenue', 'Cost', 'Profit']
     response2 = req.get(url, cookies=token['data'])
     print(response2.status_code)
-    data = response2.json()
-    df = pd.DataFrame.from_dict(data['data'])
-    print(df)
-    # writer = pd.ExcelWriter('/Users/chirantansoni/Desktop/data.xlsx')
-    # df.to_excel(writer)
-    # writer.save()
+    data_json = response2.json()
 
-
-
-connector()
+    df = pd.DataFrame.from_dict(data_json['data'])
+    cols = df.columns.tolist()
+    order = [3,4,6,7,2,8,1,9,0,5]
+    cols = [cols[i] for i in order]
+    # print(cols)
+    df = df[cols]
+    df.columns = labels
+    # print(df['Network/publisher Name'])
+    # print(df.shape)
+    # data = data_json['data'][0]
+    # print(data)
+    return df
+# print(connector())
