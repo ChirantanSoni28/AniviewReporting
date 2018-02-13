@@ -44,23 +44,16 @@ def dategen(period = input("Please enter Date range")):
         enddate = dates[1]
 
 
-    print("Today:" + str(today))
-    print("start date:" + str(startdate))
-    print("end date:" + str(enddate))
+        print("Today:" + str(today))
+        print("start date:" + str(startdate))
+        print("end date:" + str(enddate))
 
 
 
     return int(time.mktime(startdate.timetuple())),int(time.mktime(enddate.timetuple()))
 
 
-def reporttype():
-    dimension = ['iid','iname','pcid','pcidName']
-    metric = ['inventory','request','impression','revenue','cost','profit']
-    character = ['%2C','&']
 
-    for d in dimension:
-        dimension = dimension + character
-        print(dimension)
 
 def urlgen():
     baseurl = "http://manage.aniview.com/api/adserver/stats/report?"
@@ -70,7 +63,7 @@ def urlgen():
     # print(start_date)
     enddate = "endDate=" + str(end_date) + "&"
     # print(end_date)
-    dimensions = "dimensions="+"iid"+"%2C"+"iname"+"%2C"+"pcid"+"%2C"+"pcidName"+ "&"
+    dimensions = "dimensions="+"iid"+"%2C"+"iname"+ "%2C" + "ncidName"+ "%2C" +"pcid"+"%2C"+"pcidName"+ "&"
     # print(dimensions)
     metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
 
@@ -84,5 +77,4 @@ def urlgen():
     return url
 
 # print(dategen())
-# print(urlgen())
-print(reporttype())
+# urlgen()
