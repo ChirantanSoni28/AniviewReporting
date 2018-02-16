@@ -10,14 +10,16 @@ from AniviewReporting.URLgenerator import urlgen
 
 
 def alterColumns_pub(df):
-    orderedList = ['Pub_id', 'Pub_Name', 'Pub_Channel_id', 'Pub_channel_Name', 'Channel_Name', 'Inventory', 'Request',
+    orderedList = ['Date','Pub_id', 'Pub_Name', 'Pub_Channel_id', 'Pub_channel_Name', 'Channel_Name', 'Advertiser' ,'AdSource_Name', 'Inventory', 'Request',
                    'Impression', 'Revenue', 'Cost', 'Profit']
 
     labels = {"Network/publisher Id": "Pub_id",
               "Network/publisher Name": "Pub_Name",
               "Publisher Channel Id": "Pub_Channel_id",
               "Publisher Channel Name": "Pub_channel_Name",
-              "Channel Name": "Channel_Name"}
+              "Channel Name": "Channel_Name",
+              "Ad Source Name" : "AdSource_Name",
+              "Advertiser Id" : "Advertiser"}
 
     df.rename(columns={"Publisher Name": "Network/publisher Name"}, inplace=True)
     df.rename(columns=labels, inplace=True)

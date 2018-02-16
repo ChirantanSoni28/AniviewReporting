@@ -1,6 +1,6 @@
 import datetime
 import time
-
+from AniviewReporting.reportType import reporttype
 
 def customdate():
     dates = []
@@ -43,10 +43,13 @@ def dategen(period = input("Please enter Date range")):
         startdate = dates[0]
         enddate = dates[1]
 
+    else:
+        return "Please Spell the requirement correctly!"
 
-        print("Today:" + str(today))
-        print("start date:" + str(startdate))
-        print("end date:" + str(enddate))
+
+    print("Today:" + str(today))
+    print("start date:" + str(startdate))
+    print("end date:" + str(enddate))
 
 
 
@@ -63,18 +66,23 @@ def urlgen():
     # print(start_date)
     enddate = "endDate=" + str(end_date) + "&"
     # print(end_date)
-    dimensions = "dimensions="+"iid"+"%2C"+"iname"+ "%2C" + "ncidName"+ "%2C" +"pcid"+"%2C"+"pcidName"+ "&"
-    # print(dimensions)
-    metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
 
-    query = "query=%7B%7D"
 
-    file_format = "format=json" + "&"
+    # dimensions = "dimensions="+"daily"+ "%2C" + "iid"+"%2C"+"iname"+ "%2C" + "ncidName"+ "%2C" +"pcid"+"%2C"+"pcidName"+ "%2C" + "aid" + "%2C" + "nasidName" + "&"
+    #
+    # # print(dimensions)
+    # metrics = "metrics=" + "inventory"+"%2C"+"request"+"%2C"+"impression"+"%2C"+"revenue"+"%2C"+"cost"+"%2C"+"profit" + "&"
+    #
+    # query = "query=%7B%7D"
+    #
+    # file_format = "format=json" + "&"
 
-    url = baseurl + startdate + enddate + dimensions + metrics + file_format + query
+    fields = reporttype()
+
+    url = baseurl + startdate + enddate + fields
     print(url)
 
     return url
 
 # print(dategen())
-# urlgen()
+urlgen()
