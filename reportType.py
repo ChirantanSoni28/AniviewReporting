@@ -12,9 +12,12 @@ def reporttype(report_type = input("Please enter the Report type")):
 
     if report_type == "Publisher Report":
 
-        dim = "dimensions="+ dimension[0] + character[0] + dimension[1] + character[0] + dimension[2] + character[0]  + dimension[3] + character[0]  + dimension[4] + character[0]  + dimension[5] + character[1]
+        dim = "dimensions="+ dimension[0] + character[0] + dimension[1] + character[0] + dimension[2] \
+              + character[0]  + dimension[3] + character[0]  + dimension[4] + character[0]  + dimension[5] + character[1]
 
-        met = "metrics=" + metric[0] + character[0] + metric[1] + character[0] + metric[2] + character[0] + metric[3] + character[0] + metric[4] + character[0] + metric[5] + character[1]
+        met = "metrics=" + metric[0] + character[0] + metric[1] + character[0] + metric[2] + character[0] \
+              + metric[3] + character[0] + metric[4] + character[0] + metric[5] + character[1]
+
 
     elif report_type == "Adsource Report":
 
@@ -33,11 +36,11 @@ def reporttype(report_type = input("Please enter the Report type")):
               character[0] + metric[6] + character[0] + metric[7] + character[1]
 
 
-        fileFormat = "format=json&"
-        query = "%7B%7D"
+    fileFormat = "format=json&"
+    query = "%7B%7D"
 
-        fields = dim + met + fileFormat + query
+    fields = dim + met + fileFormat + query
 
-        return fields
+    return fields
 
 print(reporttype())
