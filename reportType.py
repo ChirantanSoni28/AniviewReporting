@@ -1,9 +1,5 @@
 
 
-
-
-
-
 def reporttype(report_type = input("Please enter the Report type")):
 
     dimension = ['daily','iid','iname','pcid','pcidName',"ncidName","aid","nasidName"]
@@ -43,4 +39,4 @@ def reporttype(report_type = input("Please enter the Report type")):
 
     return fields
 
-print(reporttype())
+# print(reporttype())
