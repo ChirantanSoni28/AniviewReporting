@@ -10,9 +10,14 @@ def alterColumns(df):
 
     global orderedList, labels
 
-    if df.columns.tolist() == ['Channel Name', 'Cost', 'Date', 'Impression', 'Inventory', 'Network/publisher Id',
-                               'Network/publisher Name', 'Profit', 'Publisher Channel Id', 'Publisher Channel Name',
-                               'Request', 'Revenue']:
+    df.rename(columns={"Publisher Name": "Network/publisher Name"}, inplace=True)
+    # print(type(df))
+    # print(df.columns.tolist())
+
+    if df.columns.tolist() == ['Channel Name', 'Cost', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit',
+                               'Publisher Channel Id', 'Publisher Channel Name', 'Network/publisher Name', 'Request', 'Revenue']  \
+            or df.columns.tolist() == ['Channel Name', 'Cost', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Network/publisher Name',
+                                       'Profit', 'Publisher Channel Id', 'Publisher Channel Name', 'Request', 'Revenue']:
 
         orderedList = ['Date', 'Pub_id', 'Pub_Name', 'Pub_Channel_id', 'Pub_channel_Name', 'Channel_Name',
                        'Inventory', 'Request', 'Impression', 'Revenue', 'Cost', 'Profit']
@@ -51,7 +56,7 @@ def alterColumns(df):
                   "Advertiser Id": "Advertiser"
                   }
 
-    df.rename(columns={"Publisher Name": "Network/publisher Name"}, inplace=True)
+
     df.rename(columns=labels , inplace=True)
     df = df.reindex(columns=orderedList)
 
@@ -75,7 +80,7 @@ def connector():
     print(response2.status_code)
     data_json = response2.json()
     df = pd.DataFrame.from_dict(data_json['data'])
-    print(df.columns.tolist())
+    # print(df.columns.tolist())
 
     df = alterColumns(df)
     return df

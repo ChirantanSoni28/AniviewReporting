@@ -21,7 +21,7 @@ data = connector()
 engine = sql.create_engine(url)
 connection = engine.connect()
 
-sqlConnect = data.to_sql(name='Publishers', con=connection, if_exists='replace', index=False)
+sqlConnect = data.to_sql(name='AdsourceReport', con=connection, if_exists='replace', index=False)
 
 
 
