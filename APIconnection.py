@@ -86,5 +86,5 @@ def connector():
     return df
 
 
-print(connector())
+# print(connector())
 # print(alterColumns_pub(['Channel Name', 'Cost', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit', 'Publisher Channel Id', 'Publisher Channel Name', 'Publisher Name', 'Request', 'Revenue']))
