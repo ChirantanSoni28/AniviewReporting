@@ -1,3 +1,4 @@
+import sys
 import sqlalchemy as sql
 # import pexpect, sys
 from APIconnection import connector
@@ -52,6 +53,7 @@ def typeOfreport():
 def tableSelect():
 
     reportType = typeOfreport()
+
     connection = mysql_connect(payload)
 
     if reportType == "Publisher Report":
@@ -69,13 +71,5 @@ def tableSelect():
     return sqlConnect
 
 
-
-# process = pexpect.spawn('Databaseconnect.py')
-# process.expect("Please enter the Report type")
-# process.sendline("Publisher Report")
-
-# databaseSelect()
-# print(typeOfreport())
-# mysql_connect(payload)
 
 tableSelect()

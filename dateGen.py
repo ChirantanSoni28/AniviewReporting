@@ -1,6 +1,6 @@
 import datetime
 import time
-
+import sys
 
 
 def customdate():
@@ -15,7 +15,9 @@ def customdate():
     return dates
 
 
-def dategen(period = input("Please enter Date range")):
+def dategen():
+
+    period = sys.argv[2]
 
     today = datetime.date.today()
     if period == "yesterday":
@@ -31,7 +33,7 @@ def dategen(period = input("Please enter Date range")):
         startdate = today
         enddate = today
 
-    elif period == "month to date":
+    elif period == "monthtodate":
         startdate = today.replace(day=1)
         enddate = today
 

@@ -1,14 +1,15 @@
+import sys
 
+def reporttype():
 
-def reporttype(report_type = input("Please enter the Report type")):
-
+    report_type = sys.argv[1]
     global dim, met
 
     dimension = ['daily','iid','iname','pcid','pcidName',"ncidName","aid","nasidName"]
     metric = ['inventory','request','impression','revenue','cost','profit',"bid","AdLoaded"]
     character = ['%2C','&']
 
-    if report_type == "Publisher Report":
+    if report_type == "PublisherReport":
 
         dim = "dimensions="+ dimension[0] + character[0] + dimension[1] + character[0] + dimension[2] + character[0]  \
               + dimension[3] + character[0]  + dimension[4] + character[0]  + dimension[5] + character[1]

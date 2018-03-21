@@ -1,6 +1,6 @@
 
-from AniviewReporting.reportType import reporttype
-from AniviewReporting.dateGen import dategen
+from reportType import reporttype
+from dateGen import dategen
 
 
 

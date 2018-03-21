@@ -1,7 +1,7 @@
 import requests as req
 import pandas as pd
-from AniviewReporting.URLgenerator import urlgen
-from AniviewReporting.reportType import reporttype
+from URLgenerator import urlgen
+from reportType import reporttype
 
 """The Below function sorts the column of a dataframe as required in the reports"""
 
@@ -14,10 +14,9 @@ def alterColumns(df):
     # print(type(df))
     # print(df.columns.tolist())
 
-    if df.columns.tolist() == ['Channel Name', 'Cost', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit',
-                               'Publisher Channel Id', 'Publisher Channel Name', 'Network/publisher Name', 'Request', 'Revenue']  \
-            or df.columns.tolist() == ['Channel Name', 'Cost', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Network/publisher Name',
-                                       'Profit', 'Publisher Channel Id', 'Publisher Channel Name', 'Request', 'Revenue']:
+    if df.columns.tolist() == ['Channel Name', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Network/publisher Name',
+                               'Profit', 'Publisher / Partner Cost', 'Publisher Channel Id', 'Publisher Channel Name', 'Request', 'Revenue'] \
+            or df.columns.tolist() == ['Channel Name', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit', 'Publisher / Partner Cost','Publisher Channel Id', 'Publisher Channel Name', 'Network/publisher Name', 'Request', 'Revenue']:
 
         orderedList = ['Date', 'Pub_id', 'Pub_Name', 'Pub_Channel_id', 'Pub_channel_Name', 'Channel_Name',
                        'Inventory', 'Request', 'Impression', 'Revenue', 'Cost', 'Profit']
@@ -27,6 +26,7 @@ def alterColumns(df):
                   "Publisher Channel Id": "Pub_Channel_id",
                   "Publisher Channel Name": "Pub_channel_Name",
                   "Channel Name": "Channel_Name",
+                  "Publisher / Partner Cost": "Cost"
                   }
 
     elif df.columns.tolist() == ['Ad Source Name', 'Advertiser Id', 'Cost', 'Date', 'Impression', 'Inventory',
@@ -41,7 +41,8 @@ def alterColumns(df):
                   "Publisher Channel Id": "Pub_Channel_id",
                   "Publisher Channel Name": "Pub_channel_Name",
                   "Ad Source Name": "AdSource_Name",
-                  "Advertiser Id": "Advertiser"
+                  "Advertiser Id": "Advertiser",
+                  "Publisher / Partner Cost": "Cost"
                   }
 
     elif df.columns.tolist() == ['Ad Source Name', 'AdLoaded', 'Advertiser Id', 'Bid', 'Date', 'Impression',
