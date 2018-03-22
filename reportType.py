@@ -18,7 +18,7 @@ def reporttype():
               metric[3] + character[0] + metric[4] + character[0] + metric[5] + character[1]
 
 
-    elif report_type == "Adsource Report":
+    elif report_type == "AdsourceReport":
 
         dim = "dimensions=" + dimension[0] + character[0] + dimension[1] + character[0] + dimension[3] + character[0] \
               + dimension[4] + character[0] + dimension[6] + character[0] + dimension[7] + character[1]
@@ -26,7 +26,7 @@ def reporttype():
         met = "metrics=" + metric[0] + character[0] + metric[1] + character[0] + metric[2] + character[0] + metric[3] \
               + character[0] + metric[4] + character[0] + metric[5] + character[1]
 
-    elif report_type == "Waterfall Optimization":
+    elif report_type == "WaterfallOptimization":
 
         dim = "dimensions=" + dimension[0] + character[0] + dimension[1] + character[0] + dimension[3] + character[0] \
               + dimension[6] + character[0] + dimension[7] + character[1]

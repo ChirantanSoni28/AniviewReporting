@@ -14,6 +14,8 @@ def alterColumns(df):
     # print(type(df))
     # print(df.columns.tolist())
 
+    """Publisher columns Altered"""
+
     if df.columns.tolist() == ['Channel Name', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Network/publisher Name',
                                'Profit', 'Publisher / Partner Cost', 'Publisher Channel Id', 'Publisher Channel Name', 'Request', 'Revenue'] \
             or df.columns.tolist() == ['Channel Name', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit', 'Publisher / Partner Cost','Publisher Channel Id', 'Publisher Channel Name', 'Network/publisher Name', 'Request', 'Revenue']:
@@ -29,9 +31,9 @@ def alterColumns(df):
                   "Publisher / Partner Cost": "Cost"
                   }
 
-    elif df.columns.tolist() == ['Ad Source Name', 'Advertiser Id', 'Cost', 'Date', 'Impression', 'Inventory',
-                                 'Network/publisher Id', 'Profit', 'Publisher Channel Id', 'Publisher Channel Name',
-                                 'Request', 'Revenue']:
+        """Adsource report columns Altered"""
+
+    elif df.columns.tolist() == ['Ad Source Name', 'Advertiser Id', 'Date', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit', 'Publisher / Partner Cost', 'Publisher Channel Id', 'Publisher Channel Name', 'Request', 'Revenue']:
 
         orderedList = ['Date', 'Pub_id', 'Pub_Channel_id', 'Pub_channel_Name',
                        'AdSource_Name', 'Advertiser', 'Inventory', 'Request',
@@ -44,6 +46,8 @@ def alterColumns(df):
                   "Advertiser Id": "Advertiser",
                   "Publisher / Partner Cost": "Cost"
                   }
+
+        """Waterfall Optimization Report  columns Altered"""
 
     elif df.columns.tolist() == ['Ad Source Name', 'AdLoaded', 'Advertiser Id', 'Bid', 'Date', 'Impression',
                                  'Inventory', 'Network/publisher Id', 'Publisher Channel Id', 'Request']:

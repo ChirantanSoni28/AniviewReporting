@@ -24,7 +24,7 @@ def dategen():
         startdate = today.replace(day=(today.day - 1))
         enddate = today.replace(day=(today.day - 1))
 
-    elif period == "last month":
+    elif period == "lastmonth":
         lastmonth = today.replace(day=1) - datetime.timedelta(days=1)
         startdate = today.replace(year= lastmonth.year,month=lastmonth.month, day=1)
         enddate = lastmonth
@@ -37,11 +37,11 @@ def dategen():
         startdate = today.replace(day=1)
         enddate = today
 
-    elif period == "last 7 days":
+    elif period == "last7days":
         startdate = today - datetime.timedelta(days=7)
         enddate = today - datetime.timedelta(days=1)
 
-    elif period == "custom range":
+    elif period == "customrange":
         dates = customdate()
         startdate = dates[0]
         enddate = dates[1]

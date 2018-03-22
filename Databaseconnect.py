@@ -1,5 +1,4 @@
 import sqlalchemy as sql
-# import pexpect, sys
 from APIconnection import connector
 
 
@@ -55,15 +54,15 @@ def tableSelect():
     connection = mysql_connect(payload)
 
     if reportType == "Publisher Report":
-        # print("PR")
+        print("Publisher Report")
         sqlConnect = data.to_sql(name='PublisherReport', con=connection, if_exists='replace', index=False)
 
     elif reportType == "Adsource Report":
-        # print("AR")
+        print("Adsource Report")
         sqlConnect = data.to_sql(name='AdsourceReport', con=connection, if_exists='replace', index=False)
 
     elif reportType == "Waterfall Optimization":
-        # print("WO")
+        print("Waterfall Optimization Report")
         sqlConnect = data.to_sql(name='WaterfallOptimization', con=connection, if_exists='replace', index=False)
 
     return sqlConnect
