@@ -70,8 +70,8 @@ def alterColumns(df):
 
 def connector():
     payload = {
-        "id": "chirantan@thrive.plus",
-        "password": "changeme"
+        "id": "",
+        "password": ""
     }
     response = req.post('http://manage.aniview.com/api/token?format=json', json=payload)
 
