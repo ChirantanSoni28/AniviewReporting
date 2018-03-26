@@ -55,15 +55,46 @@ def tableSelect():
 
     if reportType == "Publisher Report":
         print("Publisher Report")
-        sqlConnect = data.to_sql(name='PublisherReport', con=connection, if_exists='replace', index=False)
+        sqlConnect = data.to_sql(name='PublisherReport', con=connection, if_exists='replace', index=False, dtype={'Date':sql.types.DATE,
+                                                                                                                  'Pub_id':sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_Name':sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_Channel_id': sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_channel_Name': sql.types.VARCHAR(length=225),
+                                                                                                                  'Channel_Name': sql.types.VARCHAR(length=225),
+                                                                                                                  'Inventory': sql.types.INTEGER(),
+                                                                                                                  'Request': sql.types.INTEGER(),
+                                                                                                                  'Impression': sql.types.INTEGER(),
+                                                                                                                  'Revenue': sql.types.FLOAT(precision=4, asdecimal=True),
+                                                                                                                  'Cost': sql.types.FLOAT(precision=4, asdecimal=True),
+                                                                                                                  'Profit': sql.types.FLOAT(precision=4, asdecimal=True)})
 
     elif reportType == "Adsource Report":
         print("Adsource Report")
-        sqlConnect = data.to_sql(name='AdsourceReport', con=connection, if_exists='replace', index=False)
+        sqlConnect = data.to_sql(name='AdsourceReport', con=connection, if_exists='replace', index=False, dtype={'Date':sql.types.DATE,
+                                                                                                                  'Pub_id':sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_Channel_id': sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_channel_Name': sql.types.VARCHAR(length=225),
+                                                                                                                 'AdSource_Name': sql.types.VARCHAR(225),
+                                                                                                                 'Advertiser': sql.types.VARCHAR(225),
+                                                                                                                 'Inventory': sql.types.INTEGER(),
+                                                                                                                 'Request': sql.types.INTEGER(),
+                                                                                                                 'Impression': sql.types.INTEGER(),
+                                                                                                                 'Revenue': sql.types.FLOAT(precision=4, asdecimal=True),
+                                                                                                                 'Cost': sql.types.FLOAT(precision=4, asdecimal=True),
+                                                                                                                 'Profit': sql.types.FLOAT(precision=4, asdecimal=True)})
 
     elif reportType == "Waterfall Optimization":
         print("Waterfall Optimization Report")
-        sqlConnect = data.to_sql(name='WaterfallOptimization', con=connection, if_exists='replace', index=False)
+        sqlConnect = data.to_sql(name='WaterfallOptimization', con=connection, if_exists='replace', index=False, dtype={'Date':sql.types.DATE,
+                                                                                                                  'Pub_id':sql.types.VARCHAR(length=225),
+                                                                                                                  'Pub_Channel_id': sql.types.VARCHAR(length=225),
+                                                                                                                 'AdSource_Name': sql.types.VARCHAR(225),
+                                                                                                                 'Advertiser': sql.types.VARCHAR(225),
+                                                                                                                 'Inventory': sql.types.INTEGER(),
+                                                                                                                 'Request': sql.types.INTEGER(),
+                                                                                                                 'Impression': sql.types.INTEGER(),
+                                                                                                                 'Bid': sql.types.INTEGER(),
+                                                                                                                 'AdLoaded': sql.types.INTEGER()})
 
     return sqlConnect
 
@@ -73,8 +104,6 @@ def tableSelect():
 # process.expect("Please enter the Report type")
 # process.sendline("Publisher Report")
 
-# databaseSelect()
-# print(typeOfreport())
 # mysql_connect(payload)
 
 tableSelect()

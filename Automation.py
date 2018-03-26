@@ -1,75 +1,14 @@
-import sys
-import sqlalchemy as sql
-# import pexpect, sys
-from APIconnection import connector
+from crontab import CronTab
 
+users_cron = CronTab(user='chirantansoni')
 
+job_Pubreport = users_cron.new(command='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /Users/chirantansoni/PycharmProjects/AniviewReporting/Databaseconnect.py PublisherReport monthtodate')
+job_Pubreport.minute.every(1)
 
-payload = {"host" : "@thrivehq.cusrikqjbmvm.us-east-1.rds.amazonaws.com",
-            "pnum" : "3306/",
-            "dbname": "Aniview",
-            "id": "Thriveplus2017",
-            "pwd":  "321happy"}
+job_Adsourcereport = users_cron.new(command='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /Users/chirantansoni/PycharmProjects/AniviewReporting/Databaseconnect.py AdsourceReport monthtodate')
+job_Adsourcereport.minute.every(1)
 
-data = connector()
+job_WaterfallReport = users_cron.new(command='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /Users/chirantansoni/PycharmProjects/AniviewReporting/Databaseconnect.py WaterfallOptimization monthtodate')
+job_WaterfallReport.minute.every(1)
 
-
-
-def mysql_connect(credentials):
-
-    url = "mysql+pymysql://" + credentials['id'] + ":" + credentials['pwd'] + credentials['host'] + ":" + \
-                  credentials['pnum'] + credentials['dbname']
-    # print(url)
-
-
-    engine = sql.create_engine(url)
-    connection = engine.connect()
-
-    return connection
-
-
-
-def typeOfreport():
-
-
-    if data.columns.tolist() == ['Date', 'Pub_id', 'Pub_Name', 'Pub_Channel_id',
-                                 'Pub_channel_Name', 'Channel_Name', 'Inventory', 'Request', 'Impression', 'Revenue', 'Cost', 'Profit']:
-
-        type = "Publisher Report"
-
-    elif data.columns.tolist() == ['Date', 'Pub_id', 'Pub_Channel_id', 'Pub_channel_Name',
-                                   'AdSource_Name', 'Advertiser', 'Inventory', 'Request', 'Impression', 'Revenue', 'Cost', 'Profit']:
-
-        type = "Adsource Report"
-
-    elif data.columns.tolist() == ['Date', 'Pub_id', 'Pub_Channel_id', 'AdSource_Name',
-                                   'Advertiser', 'Inventory', 'Request', 'Impression', 'Bid', 'AdLoaded']:
-
-        type = "Waterfall Optimization"
-
-    return type
-
-
-def tableSelect():
-
-    reportType = typeOfreport()
-
-    connection = mysql_connect(payload)
-
-    if reportType == "Publisher Report":
-        # print("PR")
-        sqlConnect = data.to_sql(name='PublisherReport', con=connection, if_exists='replace', index=False)
-
-    elif reportType == "Adsource Report":
-        # print("AR")
-        sqlConnect = data.to_sql(name='AdsourceReport', con=connection, if_exists='replace', index=False)
-
-    elif reportType == "Waterfall Optimization":
-        # print("WO")
-        sqlConnect = data.to_sql(name='WaterfallOptimization', con=connection, if_exists='replace', index=False)
-
-    return sqlConnect
-
-
-
-tableSelect()
+users_cron.write()
