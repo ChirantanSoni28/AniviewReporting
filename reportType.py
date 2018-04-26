@@ -5,7 +5,7 @@ def reporttype():
     report_type = sys.argv[1]
     global dim, met
 
-    dimension = ['daily','iid','iname','pcid','pcidName',"ncidName","aid","nasidName"]
+    dimension = ['daily','iid','iname','pcid','pcidName',"ncidName","aid","nasidName","r"]
     metric = ['inventory','request','impression','revenue','cost','profit',"bid","AdLoaded"]
     character = ['%2C','&']
 
@@ -29,7 +29,7 @@ def reporttype():
     elif report_type == "WaterfallOptimization":
 
         dim = "dimensions=" + dimension[0] + character[0] + dimension[1] + character[0] + dimension[3] + character[0] \
-              + dimension[6] + character[0] + dimension[7] + character[1]
+              + dimension[6] + character[0] + dimension[7] + character[0] + dimension[8] + character[1]
 
         met = "metrics=" + metric[0] + character[0] + metric[1] + character[0] + metric[2] + character[0] + metric[6] \
               + character[0] + metric[7] + character[1]
@@ -42,4 +42,3 @@ def reporttype():
 
     return fields
 
-# print(reporttype())

@@ -1,7 +1,7 @@
 import requests as req
 import pandas as pd
 from URLgenerator import urlgen
-from reportType import reporttype
+
 
 """The Below function sorts the column of a dataframe as required in the reports"""
 
@@ -49,11 +49,11 @@ def alterColumns(df):
 
         """Waterfall Optimization Report  columns Altered"""
 
-    elif df.columns.tolist() == ['Ad Source Name', 'AdLoaded', 'Advertiser Id', 'Bid', 'Date', 'Impression',
+    elif df.columns.tolist() == ['Ad Source Name', 'AdLoaded', 'Advertiser Id', 'Bid', 'Date', 'Domain' , 'Impression',
                                  'Inventory', 'Network/publisher Id', 'Publisher Channel Id', 'Request']:
 
         orderedList = ['Date', 'Pub_id', 'Pub_Channel_id', 'AdSource_Name', 'Advertiser', 'Inventory', 'Request',
-                       'Impression', 'Bid', 'AdLoaded']
+                       'Impression', 'Bid', 'AdLoaded','Domain']
 
         labels = {"Network/publisher Id": "Pub_id",
                   "Publisher Channel Id": "Pub_Channel_id",
@@ -70,8 +70,8 @@ def alterColumns(df):
 
 def connector():
     payload = {
-        "id": "",
-        "password": ""
+        "id": "chirantan@thrive.plus",
+        "password": "changeme"
     }
     response = req.post('http://manage.aniview.com/api/token?format=json', json=payload)
 
@@ -92,5 +92,4 @@ def connector():
     return df
 
 
-# print(connector())
-# print(alterColumns_pub(['Channel Name', 'Cost', 'Impression', 'Inventory', 'Network/publisher Id', 'Profit', 'Publisher Channel Id', 'Publisher Channel Name', 'Publisher Name', 'Request', 'Revenue']))
+print(connector())
